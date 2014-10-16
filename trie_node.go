@@ -173,6 +173,10 @@ func LoadUserDict(file_path string) error {
 		if len(words) == 3 {
 			tag = words[2]
 		}
+		//如果词性为eng(英文),则将'_'替换为' ',这样可以在词典中将"iphone 6"写成"iphone_6"
+		if tag == "eng" {
+			word = strings.Replace(word, "_", " ", -1)
+		}
 		addWord(word, freq, tag)
 	}
 
