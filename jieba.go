@@ -268,7 +268,7 @@ func Cut(sentence string, cut_all bool, HMM bool) []string {
 		re_han = regexp.MustCompile(`\p{Han}+`)
 		re_skip = regexp.MustCompile(`[^[:alnum:]+#\n]`)
 	} else {
-		re_han = regexp.MustCompile(`([\p{Han}+[:alnum:]+#&\._\s]+)`) //最后加上\s,不以空格分段
+		re_han = regexp.MustCompile(`([\p{Han}+[:alnum:]+#&\._\s\:\x{ff1a}]+)`) //最后加上\s\:\x{ff1a},不以空格,:,：分段
 		re_skip = regexp.MustCompile(`(\r\n|\s)`)
 	}
 	blocks := RegexpSplit(re_han, sentence)
